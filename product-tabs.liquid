@@ -1,0 +1,199 @@
+<div class="container product-tab">
+<ul class="tabs">
+
+       <li class="tab active" data-content-id="tab-content-1">Description</li> 
+
+  {% if section.settings.tab-1 != blank %}
+      <li class="tab" data-content-id="tab-content-2">{{section.settings.tab-1}}</li> 
+
+  {% else %}
+      <div></div>
+  {% endif %}
+  
+  
+  {% if section.settings.tab-2 != blank %}
+       <li class="tab" data-content-id="tab-content-3">{{section.settings.tab-2}}</li> 
+  {% else %}
+       <div></div>
+  {% endif %}
+  
+  {% if section.settings.tab-3 != blank %}
+       <li class="tab" data-content-id="tab-content-4">{{section.settings.tab-3}}</li> 
+  {% else %}
+      <div></div>
+  {% endif %}
+  
+  {% if section.settings.tab-4 != blank %}
+      <li class="tab" data-content-id="tab-content-5">{{section.settings.tab-4}}</li> 
+  {% else %}
+      <div></div>
+  {% endif %}
+     
+    </ul>
+
+    <div id="tab-content-1" class="tab-content active">{{product.description}}</div>
+    <div id="tab-content-2" class="tab-content">{{section.settings.tab-1-content}}</div>
+    <div id="tab-content-3" class="tab-content">{{section.settings.tab-2-content}}</div>
+    <div id="tab-content-4" class="tab-content">{{section.settings.tab-3-content}}</div>
+    <div id="tab-content-5" class="tab-content">{{section.settings.tab-4-content}}</div>
+
+</div>
+
+<div class="accordion container">
+
+  <div class="contentBx">
+    <div class="label">Description</div>
+    <div class="content">
+      <p>{{product.description}}</p>
+    </div>
+  </div>
+    <div class="contentBx">
+    {% if section.settings.tab-1 != blank %}
+      <div class="label">{{section.settings.tab-1}}</div>
+    {% else %} 
+       <div></div>
+    {% endif %}
+       <div class="content">
+      <p>{{section.settings.tab-1-content}}</p>
+    </div>
+  </div>
+    <div class="contentBx">
+   {% if section.settings.tab-2 != blank %}
+      <div class="label">{{section.settings.tab-2}}</div>
+    {% else %} 
+       <div></div>
+   {% endif %}
+    <div class="content">
+      <p>{{section.settings.tab-2-content}}</p>
+    </div>
+  </div>
+    <div class="contentBx">
+   {% if section.settings.tab-3 != blank %}
+       <div class="label">{{section.settings.tab-3}}</div>
+   {% else %} 
+         <div></div>
+   {% endif %}
+    <div class="content">
+      <p>{{section.settings.tab-3-content}}</p>
+    </div>
+  </div>
+    <div class="contentBx">
+   {% if section.settings.tab-4 != blank %}
+      <div class="label">{{section.settings.tab-4}}</div>
+   {% else %}
+      <div></div>
+   {% endif %}
+    <div class="content">
+      <p>{{section.settings.tab-4-content}}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% schema %}
+{
+  "name": "Product Tabs",
+  "class": "LPHero",
+  "settings": [
+    {
+      "id": "tab-1",
+      "type": "text",
+      "label": "Tab 1",
+      "default": "Title"
+    },
+	{
+      "id": "tab-1-content",
+      "type": "textarea",
+      "label": "Tab 1 Content",
+      "default": "enter your content"
+	},
+    {
+      "id": "tab-2",
+      "type": "text",
+      "label": "Tab 2",
+      "default": "Title"
+    },
+	{
+      "id": "tab-2-content",
+      "type": "textarea",
+      "label": "Tab 2 Content",
+      "default": "enter your content"
+	},
+    {
+      "id": "tab-3",
+      "type": "text",
+      "label": "Tab 3",
+      "default": "Title"
+    },
+	{
+      "id": "tab-3-content",
+      "type": "textarea",
+      "label": "Tab 3 Content",
+      "default": "enter your content"
+	},
+    {
+      "id": "tab-4",
+      "type": "text",
+      "label": "Tab 4",
+      "default": "Title"
+    },
+	{
+      "id": "tab-4-content",
+      "type": "textarea",
+      "label": "Tab 4 Content",
+      "default": "enter your content"
+	}
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Product Tabs",
+      "category": "Product Tabs"
+    }
+  ]
+}
+{% endschema %}
+
+
+{% javascript %}
+
+tabs = document.querySelectorAll('.tab');
+tabContents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(function(tab){
+  tab.addEventListener('click', function(){
+
+
+    contentId = this.dataset.contentId;
+    content = document.getElementById(contentId);
+
+
+    tabContents.forEach(function(content){
+      content.classList.remove('active');
+    });
+
+     tabs.forEach(function(tab){
+      tab.classList.remove('active');
+    });
+
+
+
+    this.classList.add('active');
+    content.classList.add('active');
+    
+  })
+});
+
+
+const accordion = document.getElementsByClassName('contentBx');
+for (i=0; i<accordion.length; i++) {
+  accordion[i].addEventListener('click', function() {
+    this.classList.toggle('active')
+  })
+}
+
+
+{% endjavascript %}
