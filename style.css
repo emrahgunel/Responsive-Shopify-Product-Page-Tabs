@@ -1,0 +1,105 @@
+/*---Product Tabs --- */
+.tab-content {
+  display: none;
+  border: solid 1px black;
+  height: 800px;
+  padding: 30px;
+  
+}
+
+.tab-content.active {
+  display: block;
+}
+
+ul.tabs {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+  
+}
+
+li.tab {
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-top: solid 1px black;
+  border-right: solid 1px black;
+  border-left: solid 1px black;
+  
+}
+
+li.tab.active {
+  color: grey;
+ /* border-bottom: solid 2px red; */
+
+}
+
+
+.accordion .contentBx {
+  position: relative;
+  margin: 10px 20px;
+}
+
+.accordion .contentBx .label {
+  position: relative;
+  padding: 10px;
+  background: #EFEFEF;
+  cursor: pointer;
+}
+
+.accordion .contentBx .label::before {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  
+}
+
+.accordion .contentBx.active .label::before {
+  content: '-';
+}
+
+.accordion .contentBx .content {
+  position: relative;
+  padding: 5px;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  overflow-y: auto;
+}
+
+.accordion .contentBx.active .content {
+  height: 150px;
+  padding: 10px;
+}
+
+
+@media (max-width: 768px) {
+  
+  .product-tab {
+    
+    display: none;
+    
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .product-tab {
+    
+    display: none;
+    
+  }
+}
+
+@media (min-width: 769px) {
+  
+  .accordion {
+    
+    display: none;
+    
+  }
+}
